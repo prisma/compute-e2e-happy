@@ -6,8 +6,8 @@ const app = new Hono();
 app.get("/", (c) => c.text("compute-e2e-happy: ok"));
 app.get("/health", (c) => c.json({ ok: true }));
 
-// Serve over node:http so it binds regardless of whether Compute runs the app
-// under Node or Bun (Bun.serve / the default-export form only bind under Bun).
-const port = Number(process.env.PORT ?? 8080);
+// Compute's framework-led port mapping routes Hono apps to 3000; bind there so
+// the deployed app is reachable (PORT is not injected on the customer-app path).
+const port = Number(process.env.PORT ?? 3000);
 serve({ fetch: app.fetch, port });
 console.info(`compute-e2e-happy listening on :${port}`);

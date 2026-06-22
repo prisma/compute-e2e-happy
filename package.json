@@ -1,0 +1,10 @@
+{
+  "name": "compute-e2e-happy",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "module": "index.ts",
+  "dependencies": {
+    "hono": "^4.6.14"
+  }
+}
